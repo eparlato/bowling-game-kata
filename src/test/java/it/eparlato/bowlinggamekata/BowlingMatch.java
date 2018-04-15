@@ -53,11 +53,29 @@ public class BowlingMatch {
 	}
 	
 	@Test
-	public void fewThrowsWitStrike() throws Exception {
+	public void fewThrowsWithStrike() throws Exception {
 		game.rolls(10);
 		game.rolls(5);
 		game.rolls(3);
 		
 		assertEquals(26, game.score());
+	}
+	
+	@Test
+	public void perfectGame() throws Exception {
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		game.rolls(10);
+		
+		assertEquals(300, game.score());
 	}
 }
