@@ -21,14 +21,4 @@ Write a class Game that has two methods
 
 ## Notes and TODO
 
-https://sites.google.com/site/unclebobconsultingllc/home/articles/the-bowling-game-an-example-of-test-first-pair-programming
-
-* Before start writing tests, it's better to fully understand how to solve the problem, what is the input, what is the output, and why. In this case, it's better to solve some cases on paper first, then you can write tests.  
-
-* the tests show whether you need a new class or not. Don't build them until the code forces you to
-
-Rewrite it with following differences
-
-* start with a UML diagram that shows what are the entities you suppose should be in the system: frame, throws. The try to write some test using them, but always ask yourself the question WHAT IS THE BEHAVIOR OF THIS OBJECT? If an object doesn't have a behavior, but just data, than is useless.
-
-* you could use a LinkedList to connect the frames.
+* shouldn't a Frame know whether it represents a normal one, a spare or a Strike? Doesn't this logic belong to it?
