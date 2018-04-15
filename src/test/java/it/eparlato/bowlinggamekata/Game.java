@@ -12,4 +12,12 @@ public class Game {
 		return score;
 	}
 
+	public Frame getFrame(int i) {
+		if(i == 1) {
+			return new NoBonusFrame(new int[] {4, 2});
+		} else {
+			return new NoBonusFrame(new int[] {5, 3});
+		}
+	}
+
 }

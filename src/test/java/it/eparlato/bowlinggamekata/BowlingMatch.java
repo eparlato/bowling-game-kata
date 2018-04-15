@@ -1,6 +1,6 @@
 package it.eparlato.bowlinggamekata;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -26,5 +26,18 @@ public class BowlingMatch {
 		game.rolls(6);
 		
 		assertEquals(8, game.score());
+	}
+	
+	@Test
+	public void fewThrowsNoBonuses() throws Exception {
+		
+		game.rolls(3);
+		game.rolls(6);
+		game.rolls(7);
+		game.rolls(1);
+		game.rolls(2);
+		game.rolls(5);
+		
+		assertEquals(24, game.score());
 	}
 }
