@@ -40,4 +40,15 @@ public class BowlingMatch {
 		
 		assertEquals(24, game.score());
 	}
+	
+	@Test
+	public void fewThrowsWithSpare() throws Exception {
+		
+		game.rolls(4);
+		game.rolls(6);
+		game.rolls(5);
+		game.rolls(3);
+		
+		assertEquals(23, game.score());
+	}
 }

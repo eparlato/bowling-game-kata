@@ -33,10 +33,13 @@ public class Game {
 				frames.add(
 						new NoBonusFrame(new int[] { rolls[rollIndex], rolls[rollIndex + 1], rolls[rollIndex + 2] }));
 				break;
+			} else if ( (rolls[rollIndex] + rolls[rollIndex + 1]) == 10) {
+				frames.add(new SpareFrame(rolls[rollIndex + 2]));
 			} else {
 				frames.add(new NoBonusFrame(new int[] { rolls[rollIndex], rolls[rollIndex + 1] }));
-				rollIndex += 2;
 			}
+			
+			rollIndex += 2;
 		}
 
 		return frames;
