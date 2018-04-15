@@ -1,6 +1,8 @@
 package it.eparlato.bowlinggamekata;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.List;
 
 import org.junit.Test;
 
@@ -15,9 +17,8 @@ public class FrameTester {
 		game.rolls(5);
 		game.rolls(3);
 		
-		Frame firstFrame = game.getFrame(1);
-		Frame secondFrame = game.getFrame(2);
-		
-		assertEquals(14, firstFrame.getScore() + secondFrame.getScore());
+		List<Frame> frames = game.getFrames();
+		assertEquals(14, frames.get(0).getScore() + frames.get(1).getScore());
 	}
+	
 }
