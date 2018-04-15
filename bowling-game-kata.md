@@ -23,6 +23,8 @@ Write a class Game that has two methods
 
 https://sites.google.com/site/unclebobconsultingllc/home/articles/the-bowling-game-an-example-of-test-first-pair-programming
 
+* Before start writing tests, it's better to fully understand how to solve the problem, what is the input, what is the output, and why. In this case, it's better to solve some cases on paper first, then you can write tests.  
+
 * the tests show whether you need a new class or not. Don't build them until the code forces you to
 
 Rewrite it with following differences
