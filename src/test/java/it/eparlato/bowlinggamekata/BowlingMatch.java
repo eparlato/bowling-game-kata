@@ -51,4 +51,5 @@ public class BowlingMatch {
 		
 		assertEquals(23, game.score());
 	}
+	
 }

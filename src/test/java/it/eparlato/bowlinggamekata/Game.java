@@ -31,18 +31,38 @@ public class Game {
 			if (rollIndex == 18) {
 				// last frame
 				frames.add(
-						new NoBonusFrame(new int[] { rolls[rollIndex], rolls[rollIndex + 1], rolls[rollIndex + 2] }));
+						new NoBonusFrame(new int[] { currentFrameFirstThrow(rollIndex), currentFrameSecondThrow(rollIndex), lastFrameLastThrow(rollIndex) }));
 				break;
-			} else if ( (rolls[rollIndex] + rolls[rollIndex + 1]) == 10) {
-				frames.add(new SpareFrame(rolls[rollIndex + 2]));
+			} else if (isSpare(rollIndex)) {
+				frames.add(new SpareFrame(nextFrameFirstThrow(rollIndex)));
 			} else {
-				frames.add(new NoBonusFrame(new int[] { rolls[rollIndex], rolls[rollIndex + 1] }));
+				frames.add(new NoBonusFrame(new int[] { currentFrameFirstThrow(rollIndex), currentFrameSecondThrow(rollIndex) }));
 			}
 			
 			rollIndex += 2;
 		}
 
 		return frames;
+	}
+	
+	private int currentFrameFirstThrow(int rollIndex) {
+		return rolls[rollIndex];
+	}
+	
+	private int currentFrameSecondThrow(int rollIndex) {
+		return rolls[rollIndex + 1];
+	}
+	
+	private int lastFrameLastThrow(int rollIndex) {
+		return rolls[rollIndex + 2];
+	}
+	
+	private int nextFrameFirstThrow(int rollIndex) {
+		return rolls[rollIndex + 2];
+	}
+	
+	private boolean isSpare(int rollIndex) {
+		return currentFrameFirstThrow(rollIndex) + currentFrameSecondThrow(rollIndex) == 10;
 	}
 
 }
