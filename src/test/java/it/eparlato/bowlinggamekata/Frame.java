@@ -1,7 +1,20 @@
 package it.eparlato.bowlinggamekata;
 
-public interface Frame {
+public class Frame {
 
-	int getScore();
-
+	private int[] rolls;
+	
+	public Frame(int[] rolls) {
+		this.rolls = rolls;
+	}
+	
+	protected int getScore() {
+		int score = 0;
+		
+		for (int roll : rolls) {
+			score += roll;
+		}
+		
+		return score;
+	}
 }

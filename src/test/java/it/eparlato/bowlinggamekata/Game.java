@@ -26,47 +26,50 @@ public class Game {
 		List<Frame> frames = new ArrayList<Frame>();
 
 		int rollIndex = 0;
-
+		Frame frame;
+		
 		while (rollIndex < rolls.length) {
 			if (frames.size() == 9) {
-				// last frame
 				if (isStrike(rollIndex) || isSpare(rollIndex)) {
-					frames.add(new LastFrame(new int [] {rolls[rollIndex], rolls[rollIndex + 1], rolls[rollIndex + 2]}));
+					frame = new Frame(new int [] {currentThrow(rollIndex), nextThrow(rollIndex), nextSecondThrow(rollIndex)});
 				} else {
-					frames.add(new LastFrame(new int [] {rolls[rollIndex], rolls[rollIndex + 1]}));
+					frame = new Frame(new int [] {currentThrow(rollIndex), nextThrow(rollIndex)});
 				}
+				frames.add(frame);
 				
 				break;
 			} else if (isSpare(rollIndex)) {
-				frames.add(new SpareFrame(nextFrameFirstThrow(rollIndex)));
+				frame = new BonusFrame(new int[] {nextSecondThrow(rollIndex)});
 				rollIndex += 2;
-			} else if(isStrike(rollIndex)) {
-				// strike
-				frames.add(new StrikeFrame(rolls[rollIndex + 1], rolls[rollIndex + 2]));
+			} else if (isStrike(rollIndex)) {
+				frame = new BonusFrame(new int[] { nextThrow(rollIndex), nextSecondThrow(rollIndex)});
 				rollIndex += 1;
 			} else {
-				frames.add(new NoBonusFrame(new int[] { currentFrameFirstThrow(rollIndex), currentFrameSecondThrow(rollIndex) }));
+				frame = new Frame(new int[] { currentThrow(rollIndex), nextThrow(rollIndex) });
 				rollIndex += 2;
 			}
+			
+			frames.add(frame);
 		}
+		
 
 		return frames;
 	}
 	
-	private int currentFrameFirstThrow(int rollIndex) {
+	private int currentThrow(int rollIndex) {
 		return rolls[rollIndex];
 	}
 	
-	private int currentFrameSecondThrow(int rollIndex) {
+	private int nextThrow(int rollIndex) {
 		return rolls[rollIndex + 1];
 	}
 	
-	private int nextFrameFirstThrow(int rollIndex) {
+	private int nextSecondThrow(int rollIndex) {
 		return rolls[rollIndex + 2];
 	}
 	
 	private boolean isSpare(int rollIndex) {
-		return currentFrameFirstThrow(rollIndex) + currentFrameSecondThrow(rollIndex) == 10;
+		return currentThrow(rollIndex) + nextThrow(rollIndex) == 10;
 	}
 	
 	private boolean isStrike(int rollIndex) {
