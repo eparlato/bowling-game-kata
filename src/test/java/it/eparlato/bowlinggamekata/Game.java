@@ -35,11 +35,15 @@ public class Game {
 				break;
 			} else if (isSpare(rollIndex)) {
 				frames.add(new SpareFrame(nextFrameFirstThrow(rollIndex)));
+				rollIndex += 2;
+			} else if(rolls[rollIndex] == 10) {
+				// strike
+				frames.add(new StrikeFrame(rolls[rollIndex + 1], rolls[rollIndex + 2]));
+				rollIndex += 1;
 			} else {
 				frames.add(new NoBonusFrame(new int[] { currentFrameFirstThrow(rollIndex), currentFrameSecondThrow(rollIndex) }));
+				rollIndex += 2;
 			}
-			
-			rollIndex += 2;
 		}
 
 		return frames;
@@ -64,5 +68,5 @@ public class Game {
 	private boolean isSpare(int rollIndex) {
 		return currentFrameFirstThrow(rollIndex) + currentFrameSecondThrow(rollIndex) == 10;
 	}
-
+	
 }
