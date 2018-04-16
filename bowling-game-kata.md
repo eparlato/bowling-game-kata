@@ -21,4 +21,4 @@ Write a class Game that has two methods
 
 ## Notes and TODO
 
-* shouldn't a Frame know whether it represents a normal one, a spare or a Strike? Doesn't this logic belong to it?
+* introducing the Frame object wasn't a good idea, it's not clear what its purpose is, and the code just got more complicated.

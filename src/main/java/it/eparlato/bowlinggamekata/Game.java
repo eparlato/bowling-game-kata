@@ -29,6 +29,7 @@ public class Game {
 		Frame frame;
 		
 		while (rollIndex < rolls.length) {
+			
 			if (frames.size() == 9) {
 				if (isStrike(rollIndex) || isSpare(rollIndex)) {
 					frame = new Frame(new int [] {currentThrow(rollIndex), nextThrow(rollIndex), nextSecondThrow(rollIndex)});
