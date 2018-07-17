@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class BowlingMatch {
 	Game game;
-	
+        
 	@Before
 	public void setup() {
 		game = new Game();
